@@ -2,18 +2,27 @@
 
 angular.module('ngGridApp', ['ngGrid'])
 	.controller('MainCtrl', function($scope){
-		$scope.ngExcelData = [{name: "Moroni", age: 50},
-	                     {name: "Tiancum", age: 43},
-	                     {name: "Jacob", age: 27},
-	                     {name: "Nephi", age: 29},
-	                     {name: "Enos", age: 34}];
+	    $scope.cellValue;
+	    var checkboxCellTemplate='<div class="ngSelectionCell"><input tabindex="-1" class="ngSelectionCheckbox" type="checkbox" ng-checked="row.selected" /></div>';
+		$scope.columnDefs = [
+			        {field:'CHK', displayName:'chk', width: 50 , 
+			            cellTemplate:checkboxCellTemplate,
+			            sortable:false, pinned:false, enableCellEdit: false },
+			        {field:'name', displayName:'name', width: 100, enableCellEdit: true},
+			        {field:'contact', displayName:'contact', width: 300, enableCellEdit: true}
+			        ];
+
+		$scope.ngExcelData = [
+						{CHK: "1", name: "Moroni", contact: '010-2241-9445'},
+	                    {CHK: "0", name: "Tiancum", contact: '010-2241-9446'}
+	                    ];
 		$scope.addContact = function(){
 			$scope.ngExcelData.push({name:$scope.newName, contact:$scope.newContact});
 		}
 	})
 	.directive('ngExcel', function($compile){
 		return {
-			template: "<div ng-grid=\"gridOptions\" ng-style=\"myprop()\" class=\"well\"></div>",
+			template: "<div ng-grid=\"gridOptions\" ng-style=\"myprop()\"></div>",
 			restrict : "EA",
 			controller : function($scope){
 				$scope.gridOptions = {
@@ -22,10 +31,7 @@ angular.module('ngGridApp', ['ngGrid'])
 			        enableCellSelection: true,
 			        enableRowSelection: true,
 			        enableSorting: true,
-			        columnDefs: [
-			        {field:'name', displayName:'name', enableCellEdit: true},
-			        {field:'contact', displayName:'contact', enableCellEdit: true}
-			        ],
+			        columnDefs: 'columnDefs',
 			        selectedItems: []
 			    };
 			},
@@ -44,8 +50,7 @@ angular.module('ngGridApp', ['ngGrid'])
 						}
 			        };
 					console.log(newData);
-				},true);
-				// $compile(iEl.contents())(scope);
+				}, true);
 			}
 		};
 	});
