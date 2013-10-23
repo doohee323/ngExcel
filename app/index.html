@@ -15,6 +15,9 @@
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/ng-grid.css">
         <!-- endbuild -->
+
+
+
 </head>
   <body ng-app="ngGridApp">
     <!--[if lt IE 7]>
@@ -69,11 +72,11 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
     <!--script src="scripts/controllers/main.js"></script -->
-    <script src="scripts/ng-grid-2.0.7.debug.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.js"></script>
         <!-- endbuild -->
 
     <div ng-controller="MainCtrl">
-        <div class="well">
+        <div>
             <div class="form-horizontal">
                 <div class="control-group">
                     <label class="control-label">이름</label>
@@ -98,8 +101,18 @@
 
         </div-->
 
-        <ng-excel ng-excel-data="myData" rows="100" cols="100" width="200" height="100"></ng-excel>
+        <ng-excel excel-data="myData" rows="100" cols="100" width="800" height="300"></ng-excel>
+
+        <!-- <div class="gridStyle" ng-grid="gridOptions"> -->
+        </div>
+
     </div>
+
+<style type="text/css">
+.well {
+  height: 500px;
+}
+</style>
 
 </body>
 </html>
