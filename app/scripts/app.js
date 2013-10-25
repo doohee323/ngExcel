@@ -4,6 +4,7 @@ var config = {
 	development: true
 };
 
-angular.module('ngGridApp', ['ngGrid'])
-	.constant('config', config);
+var app = angular.module('ngGridApp', ['ngGrid']);
+
+app.constant('config', config);
 	

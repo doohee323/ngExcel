@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('ngGridApp')
-  .controller('MainCtrl', function($scope){
+app.controller('MainCtrl', function($scope){
 	  console.log('-------------');
 	    $scope.cellValue;
 	    var checkboxCellTemplate='<div class="ngSelectionCell"><input tabindex="-1" class="ngSelectionCheckbox" type="checkbox" ng-checked="row.selected" /></div>';

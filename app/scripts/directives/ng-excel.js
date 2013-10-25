@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('ngGridApp')
-	.directive('ngExcel', function($compile){
+app.directive('ngExcel', function($compile){
 		return {
 			template: "<div ng-grid=\"gridOptions\" ng-style=\"myprop()\"></div>",
 			restrict : "EA",
