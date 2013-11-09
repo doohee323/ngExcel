@@ -4,7 +4,7 @@ app.controller('MainCtrl', function($scope){
 	  console.log('-------------');
 	    $scope.cellValue;
 	    var checkboxCellTemplate='<div class="ngSelectionCell"><input tabindex="-1" class="ngSelectionCheckbox" type="checkbox" ng-checked="row.selected" /></div>';
-		$scope.columnDefs = [
+	    var columnDefs = [
 			        {field:'CHK', displayName:'chk', width: 50 , 
 			            cellTemplate:checkboxCellTemplate,
 			            sortable:false, pinned:false, enableCellEdit: false },
@@ -16,7 +16,15 @@ app.controller('MainCtrl', function($scope){
 						{CHK: "1", name: "Moroni", contact: '010-2241-9445'},
 	                    {CHK: "0", name: "Tiancum", contact: '010-2241-9446'}
 	                    ];
+		
 		$scope.addContact = function(){
 			$scope.ngExcelData.push({name:$scope.newName, contact:$scope.newContact});
 		}
+
+		$scope.$watch('ngExcelData', function(){
+			debugger;
+		    $scope.gridInit(null, columnDefs);  // null -> service class 구현 해야 
+//		    $scope.getDatas();s
+		}, true);
+
 	});

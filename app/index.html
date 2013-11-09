@@ -73,7 +73,7 @@
 	    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.7/ng-grid.js"></script>
         <!-- endbuild -->
 
-    <div ng-controller="MainCtrl">
+    <div ng-controller="MainCtrl" data-ng-init="init('%some_backend_value%')">
         <div>
             <div class="form-horizontal">
                 <div class="control-group">
@@ -96,7 +96,7 @@
             </div>
         </div>
 
-        <ng-excel excel-data="myData" rows="100" cols="100" width="800" height="200"></ng-excel>
+		<ng-excel id="myGrid" data="ngExcelData" rows="100" cols="100" width="100%" height="200"></ng-excel>
 
     </div>
 </body>
